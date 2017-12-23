@@ -1,0 +1,284 @@
+var a = 100;
+undefined
+typeof a;
+"number"
+var a = 100; var b = 200;
+undefined
+a;
+100
+b;
+200
+var [a,b] = [100,200];
+undefined
+a;
+100
+b;
+200
+var ff = [10,20,30,40,50];
+undefined
+var t = ff[0];
+undefined
+t;
+10
+var t1 = ff[3];
+undefined
+t1;
+40
+var [t,,,t1] = ff;
+undefined
+t;
+10
+t1;
+40
+var ty = ["Hello",2,"ok",true];
+undefined
+var [x,,,y] = ty;
+undefined
+x;
+"Hello"
+yl
+VM17717:1 Uncaught ReferenceError: yl is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM17717:1
+y;
+true
+typeof x;
+"string"
+typeof y;
+"boolean"
+x = 100;
+100
+typeof y;
+"boolean"
+typeof x;
+"number"
+x = 100.20;
+100.2
+typeof x;
+"number"
+x= "Hello";
+"Hello"
+typeof x;
+"string"
+x='H';
+"H"
+typeof x;
+"string"
+x=false;
+false
+typeof x;
+"boolean"
+gg = 1000;
+1000
+function Hello(){
+var ename = "Ram";
+name = "Shyam";
+console.log("Ename is "+ename+" name is "+name);
+}
+undefined
+Hello();
+VM18139:4 Ename is Ram name is Shyam
+undefined
+ename;
+VM18184:1 Uncaught ReferenceError: ename is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM18184:1
+name;
+"Shyam"
+function Hello(){
+if(10>2){
+var ename = "Ram";
+name = "Shyam";
+console.log("Ename is "+ename+" name is "+name);
+}
+VM18387:6 Uncaught SyntaxError: Unexpected end of input
+function Hello(){
+if(10>2){
+var ename = "Ram";
+}
+name = "Shyam";
+console.log("Ename is "+ename+" name is "+name);
+}
+undefined
+Hello();
+VM18448:6 Ename is Ram name is Shyam
+undefined
+function Hello(){
+if(10>2){
+let ename = "Ram";
+}
+name = "Shyam";
+console.log("Ename is "+ename+" name is "+name);
+}
+undefined
+Hello();
+VM18583:6 Uncaught ReferenceError: ename is not defined
+    at Hello (<anonymous>:6:25)
+    at <anonymous>:1:1
+Hello @ VM18583:6
+(anonymous) @ VM18602:1
+a= 1000/0;
+Infinity
+typeof a;
+"number"
+a= 1000/"one";
+NaN
+typeof a;
+"number"
+var empObject = {id:1001,name:'Ram',salary:99999};
+undefined
+empObject.id;
+1001
+empObject.name;
+"Ram"
+empObject.salary;
+99999
+typeof empObject;
+"object"
+empObject instanceof Object;
+true
+typeof Object;
+"function"
+empObject;
+{id: 1001, name: "Ram", salary: 99999}
+empObject.bonus=999;
+999
+empObject;
+{id: 1001, name: "Ram", salary: 99999, bonus: 999}
+delete empObject.id;
+true
+empObject;
+{name: "Ram", salary: 99999, bonus: 999}
+JSON.stringify(empObject);
+"{"name":"Ram","salary":99999,"bonus":999}"
+var g = [10,20,30,40,50];
+undefined
+typeof g;
+"object"
+g instanceof Array;
+true
+typeof Array;
+"function"
+Array;
+ƒ Array() { [native code] }
+Array.prototype;
+[constructor: ƒ, concat: ƒ, pop: ƒ, push: ƒ, shift: ƒ, …]concat: ƒ concat()constructor: ƒ Array()copyWithin: ƒ copyWithin()entries: ƒ entries()every: ƒ every()fill: ƒ fill()filter: ƒ filter()find: ƒ find()findIndex: ƒ findIndex()forEach: ƒ forEach()includes: ƒ includes()indexOf: ƒ indexOf()join: ƒ join()keys: ƒ keys()lastIndexOf: ƒ lastIndexOf()length: 0map: ƒ map()pop: ƒ pop()push: ƒ push()reduce: ƒ reduce()reduceRight: ƒ reduceRight()reverse: ƒ reverse()shift: ƒ shift()slice: ƒ slice()some: ƒ some()sort: ƒ sort()splice: ƒ splice()toLocaleString: ƒ toLocaleString()toString: ƒ toString()unshift: ƒ unshift()Symbol(Symbol.iterator): ƒ values()Symbol(Symbol.unscopables): {copyWithin: true, entries: true, fill: true, find: true, findIndex: true, …}__proto__: Object
+g;
+(5) [10, 20, 30, 40, 50]
+g = null;
+null
+typeof g;
+"object"
+var hh ;
+undefined
+typeof hh;
+"undefined"
+b  = "";
+""
+typeof b;
+"string"
+function Abc(){
+console.log("this is abc ");
+}
+undefined
+var y = Abc;
+undefined
+typeof y;
+"function"
+y();
+VM22906:2 this is abc 
+undefined
+var cc = function(){
+console.log("this is cc ");
+}
+undefined
+typeof cc;
+"function"
+cc();
+VM23160:2 this is cc 
+undefined
+cc;
+ƒ (){
+console.log("this is cc ");
+}
+function TestA(){
+var TestB= function(){
+	console.log("Inside TestB");
+}
+console.log("Inside Test A");
+return TestB;
+}
+undefined
+var d = TestA();
+VM23668:5 Inside Test A
+undefined
+d;
+ƒ (){
+	console.log("Inside TestB");
+}
+typeof d;
+"function"
+d();
+VM23668:3 Inside TestB
+undefined
+function TestA(){
+var TestB= function(){
+	console.log("Inside TestB");
+	var TestC = function(){
+	console.log("Inside TestC ");
+}
+return TestC;
+}
+console.log("Inside Test A");
+return TestB;
+}
+undefined
+var d = TestA();
+VM24018:9 Inside Test A
+undefined
+d;
+ƒ (){
+	console.log("Inside TestB");
+	var TestC = function(){
+	console.log("Inside TestC ");
+}
+return TestC;
+}
+function TestA(){
+var TestB= function XYZ(){
+	console.log("Inside TestB");
+	var TestC = function ABCD(){
+	console.log("Inside TestC ");
+}
+return TestC;
+}
+console.log("Inside Test A");
+return TestB;
+}
+undefined
+var d = TestA();
+VM24176:9 Inside Test A
+undefined
+d;
+ƒ XYZ(){
+	console.log("Inside TestB");
+	var TestC = function ABCD(){
+	console.log("Inside TestC ");
+}
+return TestC;
+}
+var tt = d();
+VM24176:3 Inside TestB
+undefined
+tt;
+ƒ ABCD(){
+	console.log("Inside TestC ");
+}
+tt();
+VM24176:5 Inside TestC 
+undefined
+TestA()()();
+VM24176:9 Inside Test A
+VM24176:3 Inside TestB
+VM24176:5 Inside TestC 
+undefined
