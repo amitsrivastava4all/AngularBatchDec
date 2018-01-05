@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function doAjax(fn, method, url) {
+            var domain = document.querySelector("#domain").value;
+            url = url + domain;
+            var xmlHttpReq = new XMLHttpRequest();
+            xmlHttpReq.open(method, url);
+            xmlHttpReq.onreadystatechange = function() {
+                console.log("State is ", xmlHttpReq.readyState);
+                if (xmlHttpReq.readyState == 4 && xmlHttpReq.status == 200) {
+                    fn(xmlHttpReq.responseText);
+                }
+            }
+            xmlHttpReq.send(null);
+            console.log("Send Call");
+        }
+
+        function printDetails(object) {
+            var obj = JSON.parse(object);
+            document.querySelector("#msg").innerHTML = "IP is " + obj.ip + " Country is " + obj.country_code;
+        }
+
+
+        function doWork() {
+            console.log("Start.....");
+            setTimeout(big, 7000);
+            console.log("end");
+        }
+
+        function big() {
+            for (let i = 1; i <= 1000000; i++) {
+                for (let j = 1; j <= 100000; j++) {
+
+                }
+            }
+        }
+
+        var counter = 1;
+
+        function sayHello() {
+            document.querySelector("#msg").innerHTML = "Hello " + counter;
+            counter++;
+        }
+    </script>
+</head>
+
+<body>
+    <p id="msg"></p>
+    <input type="text" id="domain" placeholder="Type Domain Name">
+    <button onclick="doAjax(printDetails,'GET','http://freegeoip.net/json/')">Ajax</button>
+    <button onclick="doWork()">Do Work</button>
+    <button onclick="sayHello()">Say Hello</button>
+
+</body>
+
+</html>
