@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .size {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script>
+        var f = "";
+
+        function ajax(fn) {
+            console.log("First Line...")
+            var searchBox = document.querySelector("#search").value;
+            var url = "http://api.giphy.com/v1/gifs/search?q=" + searchBox + "&api_key=dc6zaTOxFJmzC";
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", url);
+            xmlHttp.onreadystatechange = function() {
+                if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                    console.log("Done...");
+                    drawImages(xmlHttp.responseText);
+                    fn("Done");
+                    //f = "Done";
+                    console.log("After Set F");
+                    // return "Done...";
+
+                }
+            }
+            xmlHttp.send(null);
+            console.log("Last Line");
+
+        }
+
+        function printMe(ee) {
+            console.log("T is ", ee);
+        }
+
+        function checkAsynch() {
+            //var t = ajax(()=> console.log("T is ", f));
+            var pr = new Promise((resolve, reject) => {
+
+            });
+            ajax((q) => console.log("T is ******* ", q));
+            //ajax(printMe);
+            console.log("I will run .......");
+        }
+
+        function drawImages(json) {
+            document.querySelector("#output").innerHTML = "";
+            // document.querySelector("#output").innerHTML = json;
+            var object = JSON.parse(json);
+            //console.log(object);
+            object.data.forEach((currentImage) => {
+                let img = document.createElement("img");
+                img.src = currentImage.images.original.url;
+                img.className = "size";
+                document.querySelector("#output").appendChild(img);
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Ajax Example</h1>
+    <button onclick="checkAsynch()">Call T</button>
+    <input type="text" placeholder="Type to Search" id="search">
+    <button onclick="ajax()">Search</button>
+    <div id="output"></div>
+</body>
+
+</html>
