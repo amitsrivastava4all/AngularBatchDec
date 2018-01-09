@@ -1,0 +1,94 @@
+class A{
+
+}
+undefined
+typeof A;
+"function"
+function Item(id,name,price){
+	this.id = id;
+this.name = name;
+this.price = price;
+console.log('i am a function constructor');
+}
+undefined
+var mobile = new Item(1001,"Apple",9909);
+VM3134:5 i am a function constructor
+undefined
+mobile;
+Item {id: 1001, name: "Apple", price: 9909}
+typeof mobile;
+"object"
+mobile instanceof Item;
+true
+function Item(id,name,price){
+	this.id = id;
+this.name = name;
+this.price = price;
+this.markForDelete = false;
+this.toggle=function(){
+return (this.markForDelete = !this.markForDelete);
+}
+console.log('i am a function constructor');
+}
+undefined
+var mobile = new Item(1001,"Apple",9909);
+VM4109:9 i am a function constructor
+undefined
+mobile;
+Item {id: 1001, name: "Apple", price: 9909, markForDelete: false, toggle: ƒ}
+mobile.toggle();
+true
+mobile;
+Item {id: 1001, name: "Apple", price: 9909, markForDelete: true, toggle: ƒ}
+Item.prototype.print=function(){
+console.log(`Id is ${this.id} and Name is ${this.name} and Price is ${this.price}`);
+}
+ƒ (){
+console.log(`Id is ${this.id} and Name is ${this.name} and Price is ${this.price}`);
+}
+mobile.print();
+VM4573:2 Id is 1001 and Name is Apple and Price is 9909
+undefined
+Item.show=function(){
+console.log("I am a Show ");
+}
+ƒ (){
+console.log("I am a Show ");
+}
+mobile.show();
+VM5561:1 Uncaught TypeError: mobile.show is not a function
+    at <anonymous>:1:8
+(anonymous) @ VM5561:1
+var tablet = new Item(1002,"Tablet",9999);
+VM4109:9 i am a function constructor
+undefined
+tablet.print();
+VM4573:2 Id is 1002 and Name is Tablet and Price is 9999
+undefined
+mobile.print();
+VM4573:2 Id is 1001 and Name is Apple and Price is 9909
+undefined
+Item.show();
+VM5503:2 I am a Show 
+undefined
+var f = "Hello";
+undefined
+f.toUpperCase();
+"HELLO"
+f instanceof String;
+false
+f instanceof string;
+VM6080:1 Uncaught ReferenceError: string is not defined
+    at <anonymous>:1:14
+(anonymous) @ VM6080:1
+typeof f;
+"string"
+String.prototype.myfunction=function(){
+console.log("this is my function ");
+}
+ƒ (){
+console.log("this is my function ");
+}
+f.myfunction();
+VM6386:2 this is my function 
+undefined
