@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red {
+            background-color: red;
+        }
+        
+        .green {
+            background-color: green;
+        }
+    </style>
+    <script src="angular.min.js"></script>
+</head>
+
+<body ng-app>
+
+    <input type="checkbox" ng-model="tick">Show Hide {{tick}}
+    <h1 ng-class="{ 'red':price<5000, 'green':price>=5000}">Class Demo</h1>
+    <div ng-show="tick">
+        <input ng-init="price=0" type="text" placeholder="Type Price" ng-model="price"> Price is {{price|currency:'&#8377'}}
+    </div>
+    <input ng-model="firstname" type="text" placeholder="Type First Name Here"> First name is {{firstname|uppercase}}
+    <br>
+    <input type="text" ng-model="lastname" placeholder="Type Last Name Here"> {{lastname|lowercase}}
+</body>
+
+</html>
