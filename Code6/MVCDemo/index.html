@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="libs/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/factory.js"></script>
+    <script src="js/controller.js"></script>
+</head>
+
+<body ng-app="myapp">
+    <div ng-controller="initctrl">
+        <input type="text" ng-model="firstname" placeholder="Type First Name">
+        <br>
+        <input type="text" ng-model="lastname" placeholder="Type Last Name">
+        <button ng-click="fullName()">Show Full Name</button>
+        <h3>Full Name is {{fullname}}</h3>
+    </div>
+</body>
+
+</html>
