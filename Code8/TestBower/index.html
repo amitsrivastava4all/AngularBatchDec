@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="js/config/routesconstants.js"></script>
+    <script src="js/config/urlconfig.js"></script>
+    <script src="js/factory/newsfactory.js"></script>
+    <script src="js/controller/newscontroller.js"></script>
+    <script src="js/controller/aboutuscontroller.js"></script>
+    <script src='spa-routes.js'></script>
+</head>
+
+<body ng-app="myapp">
+    <div class="container">
+        <a ng-href="#/">Home</a>
+        <a ng-href="#/about/20/3">AboutUs</a>
+        <a ng-href="#/news">News</a>
+        <input class="form-control" type="text" placeholder="type Name" ng-model="name"> {{name}}
+        <button class="btn btn-primary">Show</button>
+        <ng-view></ng-view>
+    </div>
+</body>
+
+
+
+</html>

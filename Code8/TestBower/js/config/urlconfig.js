@@ -1,0 +1,1 @@
+app.value('NEWS','https://newsapi.org/v1/articles?source=bbc-news&apiKey=11f0dc28d8874be0bb82287cbcf26121');
