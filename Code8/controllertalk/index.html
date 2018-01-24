@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script>
+        const app2 = angular.module("module2", []);
+        const app = angular.module("myapp", ["module2"]);
+        app2.factory("myfactory", function() {
+            var object = {
+                x: 100
+            }
+            return object;
+        })
+        app.controller("ctrl1", ($scope, $rootScope, myfactory) => {
+            $scope.plusX = function() {
+                myfactory.x = myfactory.x + 1;
+            }
+            $scope.typeIt = function() {
+                $rootScope.name = $scope.firstname;
+                console.log("Change Fire....");
+            }
+            $rootScope.city = "Delhi";
+            console.log("Controller 1 is Done ", $scope.firstname);
+        });
+        app.controller("ctrl2", ($scope, myfactory) => {
+            $scope.getX = function() {
+                $scope.xValue = myfactory.x;
+            }
+            console.log("Controller 2 is Done ", $scope.name);
+        });
+    </script>
+</head>
+
+<body ng-app="myapp">
+    <div ng-controller="ctrl1">
+        <input ng-change="typeIt()" ng-model="firstname" type="text" placeholder="Type First Name"> {{firstname}}
+        <button ng-click="plusX()">Plus X</button>
+
+
+    </div>
+    <hr>
+    <div ng-controller="ctrl2">
+        <button ng-click="getX()">Get X</button> {{xValue}}
+        <input ng-model="lastname" type="text" placeholder="Type Last Name"> {{name}} &nbsp; {{lastname}} &nbsp; {{city}}
+    </div>
+</body>
+
+</html>
