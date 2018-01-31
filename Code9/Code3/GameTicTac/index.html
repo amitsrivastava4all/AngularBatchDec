@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tictactoe</title>
+    <style>
+        button {
+            background-color: cyan;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 2px;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script src="angular.min.js"></script>
+    <script>
+        const app = angular.module("tictac", []);
+        app.controller("ctrl", ($scope, myfactory) => {
+            $scope.buttons = myfactory.prepareButtons();
+            var isXorZero = false;
+            $scope.printXorZero = function(row) {
+                var value = isXorZero ? "X" : "0";
+                myfactory.updateButton(row, value);
+                isXorZero = !isXorZero;
+                $scope.buttons = myfactory.buttons;
+            }
+        });
+        app.factory("myfactory", () => {
+            const object = {
+                buttons: [],
+                updateButton(row, value) {
+                    this.buttons[row].value = value;
+                },
+                prepareButtons() {
+                    for (let i = 1; i <= 9; i++) {
+                        this.buttons.push(new TicButton());
+                    }
+                    return this.buttons;
+                }
+
+            };
+            return object;
+        });
+        class TicButton {
+            constructor() {
+                this.value = "";
+            }
+        }
+    </script>
+</head>
+
+<body ng-app="tictac" ng-controller="ctrl">
+    <table>
+        <tr>
+            <td ng-repeat="row in [0,1,2]"><button ng-click="printXorZero(row)">{{buttons[row].value}}</button></td>
+        </tr>
+        <tr>
+            <td ng-repeat="row in [3,4,5]"><button ng-click="printXorZero(row)">{{buttons[row].value}}</button></td>
+        </tr>
+        <tr>
+            <td ng-repeat="row in [6,7,8]"><button ng-click="printXorZero(row)">{{buttons[row].value}}</button></td>
+        </tr>
+    </table>
+</body>
+
+</html>
