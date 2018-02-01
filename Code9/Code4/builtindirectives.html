@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red {
+            background-color: lightcoral;
+        }
+        
+        .green {
+            background-color: lightgreen;
+        }
+    </style>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script>
+        const app = angular.module("myapp", ['ngSanitize']);
+        app.run(() => {
+            console.log("I Will Like a main and call after the config before the controller , factory , directive, filter");
+        })
+        app.controller("myctrl", ($scope, $sce, $timeout, $interval, $location) => {
+            console.log("Injecting Controller");
+            $scope.name = "Amit";
+            $scope.lastname = "Srivastava";
+            $scope.msg = "<h2>Name is " + $scope.name + "</h2>";
+            $scope.showIt = 0;
+            $scope.showPrice = function() {
+                $scope.showIt = 10;
+                $location.path('/myPath');
+            }
+            $scope.data = [{
+                "name": "Ram",
+                "phone": "2222"
+            }, {
+                "name": "Shyam",
+                "phone": "3333"
+            }, {
+                "name": "Sohan",
+                "phone": "4444"
+            }, {
+                "name": "Mohan",
+                "phone": "7777"
+            }];
+            $timeout(() => {
+                $scope.result = "TimeOut Happen after 10 sec";
+            }, 10000);
+
+            $interval(function() {
+                $scope.currentdate = new Date();
+            }, 1000);
+        })
+    </script>
+</head>
+
+<body ng-app="myapp" ng-controller="myctrl">
+    <p>Name is <span ng-bind="name"></span></p>
+    <p>Full Name is <span ng-bind-template="{{name}} {{lastname}}"></span></p>
+    <div ng-bind-html="msg">
+    </div>
+    <input type="checkbox" ng-model="tick"> Select All <br>
+    <input type="checkbox" ng-checked="tick">Drinks <br>
+    <input type="checkbox" ng-checked="tick">Fast Food <br>
+    <input type="checkbox" ng-checked="tick">Dessert <br>
+
+
+    <button ng-click="showPrice()" ng-disabled="!tick">Buy</button>
+    <div ng-if="showIt==10">
+        Price is 1000
+    </div>
+    <br> Include Example
+    <br>
+    <div style="" class=""></div>
+    <div ng-include="'footer.html'"></div>
+    <div ng-class="{'red':count>2,'green':count<=2}"></div>
+    <button ng-click="count=count+1">COUNT {{count}}</button>
+    <div ng-style="count >= 1 && count<=5 ? {'background-color':'green'} :  {'background-color':'yellow'}">
+        Sample Text
+    </div>
+    <br>
+    <table border="1">
+        <tr>
+            <td>Name</td>
+            <td>Phone</td>
+        </tr>
+        <tr ng-repeat="x in data" ng-class-odd="'red'" ng-class-even="'green'">
+            <td>{{x.name}}</td>
+            <td>{{x.phone}}</td>
+        </tr>
+    </table>
+    RESULT ::: {{result}}
+    <br> Time is {{currentdate}}
+</body>
+
+</html>
