@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h3 {
+            color: red;
+        }
+    </style>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script>
+        var app = angular.module("myapp", []);
+        // app.config(function($interpolateProvider){
+
+        // });
+        app.run(() => {
+            console.log("it is like a main...");
+        })
+        app.controller("myctrl", ['$scope', function(s) {
+            console.log("Inside Controller")
+            console.log("This is ", this);
+            s.firstName = "Ram";
+            s.lastName = "Kumar";
+            s.posts = [{
+                id: 1,
+                name: 'Ram',
+                url: 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-128.png',
+                message: 'Hello',
+                like: 0
+            }, {
+                id: 2,
+                name: 'Shyam',
+                url: 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png',
+                message: 'Hi',
+                like: 0
+            }, {
+                id: 3,
+                name: 'Sohan',
+                url: 'https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-128.png',
+                message: 'Hey',
+                like: 0
+            }]
+            s.show = function() {
+                this.message = "Hello User";
+            }
+        }]);
+        app.directive("companyTitle", function() {
+            var object = {
+                template: '<h2>Company Name is ABCD' + new Date() + '</h2>',
+                restrict: 'A',
+                link: function(scope, element, attrs) {
+                    element.bind("click", function() {
+                        element.hide(1000);
+                    });
+
+                    // element[0].addEventListener("click", function() {
+                    //     element[0].innerHTML = "Hello U Click on this";
+                    // }).apply
+                }
+            }
+            return object;
+        });
+        app.directive("tcsHeader", function() {
+            var object = {
+                templateUrl: 'header.html',
+                controller: function($scope) {
+                    $scope.print = function() {
+                        $scope.msg = "I am a Directive Controller";
+                    }
+                    $scope.doLike = function(p) {
+                        p.like++;
+                    }
+                },
+                restrict: 'E'
+                    //template: '<h1>This is Header</h1>'
+
+            }
+            return object;
+        });
+    </script>
+</head>
+
+<body ng-app="myapp">
+    <div company-title>
+        Hello this is Div
+    </div>
+    <div ng-controller="myctrl">
+        <button ng-click="show()">Show Call</button> Message is {{message}}
+        <ul>
+            <li ng-repeat="p in posts">
+                <tcs-header></tcs-header>
+            </li>
+        </ul>
+
+    </div>
+    <!-- <tcs_header></tcs_header> -->
+    <!-- <tcs:header></tcs:header> -->
+
+</body>
+
+</html>
